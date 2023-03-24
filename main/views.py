@@ -299,7 +299,7 @@ def payment(request):
         profile = Customer.objects.get(user__username = request.user.username)
         api_key = 'sk_test_f30fe959db9d97913bea665d263eda3e3491004f' #secret key from paystack
         curl = 'https://api.paystack.co/transaction/initialize' #paystack call url
-        cburl = 'http://127.0.0.1:8000/callback' #payment confirmation page
+        cburl = 'http://13.53.46.110/callback' #payment confirmation page
         ref = str(uuid.uuid4()) #reference id required by paystack as and additional reference number
         order_no = profile.id
         total = float(request.POST['total']) * 100 #total amount to be charged from customer card 
