@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block loader %} {% include 'loader.html' %} {% endblock loader %}
+{% block header %} {% include 'header.html' %} {% endblock header %}
+{% block content %}
+<div class="container">
+  <div class="row mt-5 mb-5">
+   <div class="col-12 col-md-3 pavat">
+      <img src="{% url 'profile' %}" alt="">
+      <p>{{userprof.user}}</p>
+      <hr>
+      <ul class="list-unstyled">
+        <li><a href="{% url 'profile' %}">Profile</a></li>
+        <li><a href="{% url 'profile_update' %}">Profile update</a></li>
+        <li><a href="{% url 'password_update' %}">Password update</a></li>
+      </ul>
+   </div>
+   <div class="col-12 col-md-9 pupdate">
+      <form action="{% url 'profile_update'  %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Username</label>
+          <input type="Text"  name="username" value="{{userprof.username}}" class="form-control" id="exampleFormControlInput1" placeholder="">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">First Name</label>
+          <input type="Text"  name="first_name" value="{{userprof.first_name}}" class="form-control" id="exampleFormControlInput1" placeholder="">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Last Name</label>
+          <input type="Text" name="last_name" value="{{userprof.last_name}}" class="form-control" id="exampleFormControlInput1" placeholder="">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Phone</label>
+          <input type="Text" name="phone" value="{{userprof.phone}}" class="form-control" id="exampleFormControlInput1" placeholder="">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Email</label>
+          <input type="email" name="email" value="{{userprof.email}}" class="form-control" id="exampleFormControlInput1" placeholder="">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Address</label>
+          <input type="text" name="address" value="{{userprof.address}}" class="form-control" id="exampleFormControlInput1" placeholder="">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Upload Photo</label>
+          <input type="file" name="pix" class="form-control" id="exampleFormControlInput1" placeholder="">
+        </div>
+        <div class="mb-3">
+          <button type="submit" class="btn">Save Changes</button>
+        </div>
+      </form>
+   </div>
+ </div>
+</div>
+{% endblock content %}
+{% block footer %}{% include 'footer.html' %}{% endblock footer %}
